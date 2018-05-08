@@ -1,0 +1,76 @@
+<div id="tripModalForm" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Cadastro de Viagem</h4>
+      </div>
+      <div class="modal-body">
+        <section>
+          <div class="row">
+            <div class="col-md-12">
+              <form name="ctrl.form" novalidate>
+                <div class="row">
+                  <div class="col-md-12">
+                    <h2>Informações da Viagem</h2>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">
+                    <div class="form-group" ng-messages="ctrl.form.date.$error" >
+                      <label>Data de Partida</label> <span class="text-danger">*</span>
+                      <div class="input-group">
+                        <input type="text" class="form-control" uib-datepicker-popup="dd/MM/yy" datepicker-options="ctrl.formCalendars.startDate"
+                        is-open="ctrl.formCalendars.startDate.opened" name="date" ng-model="ctrl.model.date" required show-button-bar="false"/>
+                        <span class="input-group-btn">
+                          <button type="button" class="btn btn-default btn-calendar" ng-click="ctrl.openCalendar()" ><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                      </div>
+                      <span class="text-danger" ng-message="required" ng-show="ctrl.form.date.$touched">Campo obrigatório</span>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="form-group" ng-messages="ctrl.form.time.$error">
+                        <label>Horário de Partida</label> <span class="text-danger">*</span>
+                        <input type="time" class="form-control" name="time" ng-model="ctrl.model.time" required>
+                        <span class="text-danger" ng-message="required" ng-show="ctrl.form.time.$touched">Campo obrigatório</span>
+                        <span class="text-danger" ng-message="time" ng-show="ctrl.form.time.$touched">Formato inválido</span>
+                      </div>
+                    </div>
+                  <div class="col-md-6">
+                      <div class="form-group" ng-messages="ctrl.form.vehicleType.$error">
+                          <label>Tipo de Veículo</label> <span class="text-danger">*</span>
+                          <select name="vehicleType" required ng-model="ctrl.model.vehicleType" class="form-control" 
+                           ng-options="::vehicle as vehicle.name for vehicle in ctrl.vehicleTypes"></select>
+                           <span class="text-danger" ng-message="required" ng-show="ctrl.form.vehicleType.$touched">Campo obrigatório</span>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group" ng-messages="ctrl.form.origin.$error" > 
+                      <label>Origem</label> <span class="text-danger">*</span>
+                      <input type="text" class="form-control" name="origin" ng-model="ctrl.model.origin" required>
+                      <span class="text-danger" ng-message="required" ng-show="ctrl.form.origin.$touched">Campo obrigatório</span>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group" ng-messages="ctrl.form.destination.$error" >
+                      <label>Destino</label> <span class="text-danger">*</span>
+                      <input type="text" class="form-control" name="destination" ng-model="ctrl.model.destination" required>
+                      <span class="text-danger" ng-message="required" ng-show="ctrl.form.destination.$touched" >Campo obrigatório</span>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <ng-include src="'app/components/tripInformations/passenger-form.html'"></ng-include>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-blue" ng-disabled="ctrl.form.$invalid || ctrl.model.passengers.length < 1" ng-click="ctrl.save()" >Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>

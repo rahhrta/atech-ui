@@ -1,0 +1,17 @@
+<article>
+  <div class="content-header">
+    <div class="content-header-left">
+      <h1>Gerenciador de Viagens</h1>
+    </div>
+    <div class="content-header-right">
+      <button class="btn btn-blue" type="button" data-toggle="modal" data-target="#tripModalForm">
+        <i class="fa fa-plus"></i>
+        <strong>Adicionar Nova Viagem</strong>
+      </button>
+    </div>
+  </div>
+  <ng-include src="'app/controllers/home/trip-table.html'"></ng-include>
+  <trip-form-modal vehicle-types="vm.vehicleTypes" callback="vm.saveTripInformations"></trip-form-modal>
+</article>
+
+<flash-message class="flashMessage" duration="3000"></flash-message>

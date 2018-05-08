@@ -1,0 +1,38 @@
+<ng-form name="ctrl.passengerForm" novalidate>
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Adicionar Passageiro</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-group" ng-messages="ctrl.passengerForm.passengerName.$error">
+        <label>Nome</label>
+        <span class="text-danger">*</span>
+        <input type="text" class="form-control" name="passengerName" ng-model="ctrl.passenger.name" required>
+        <span class="text-danger" ng-message="required" ng-show="ctrl.passengerForm.passengerName.$touched">Campo obrigatório</span>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group" ng-messages="ctrl.passengerForm.passengerTelephone.$error">
+        <label>Telefone</label>
+        <span class="text-danger">*</span>
+        <input type="text" ui-mask="(99) 99999-9999" class="form-control" name="passengerTelephone" ng-model="ctrl.passenger.telephone" required>
+        <span class="text-danger" ng-message="required" ng-show="ctrl.passengerForm.passengerTelephone.$touched">Campo obrigatório</span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="btn-passenger">
+      <button class="btn btn-blue" type="button" ng-disabled="ctrl.passengerForm.$invalid" ng-click="ctrl.addPassenger()">
+        <i class="fa fa-plus"></i>
+        <strong>Adicionar</strong>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <ng-include ng-repeat="passenger in ctrl.model.passengers" src="'app/components/tripInformations/passengers-list.html'"></ng-include>
+    </div>
+  </div>
+</ng-form>

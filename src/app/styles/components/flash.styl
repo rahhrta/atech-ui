@@ -1,0 +1,36 @@
+.flashMessage
+    position: absolute
+    top: 60px
+    left: 35%
+    right: 25%
+    width: 50vh
+    z-index: 9999
+    .alert-container
+        margin: 0 auto
+        transitions transform 0.22s ease-in, opacity 0.22s ease-in-out
+        &.ng-leave
+            opacity: 1
+        &.ng-leave-active
+            opacity: 0
+        &.ng-enter
+            opacity: 0
+            transforms translate3d(0px, -30px, 0px)
+        &.ng-enter-active
+            opacity: 1
+            transforms translate3d(0px, 0px, 0px)
+        .close
+            color: $WHITE
+            opacity: .5
+        .alert
+            width: 50vh
+            border-color: transparent
+            border-top-left-radius: inherit
+            border-top-right-radius: inherit
+            color: $WHITE
+            margin: 0 auto
+            text-align: center
+            display: table
+            &.alert-success
+                background-color: $GREEN
+            &.alert-danger
+                background-color: $RED
